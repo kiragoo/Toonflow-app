@@ -36,6 +36,7 @@ import * as personalization from "@/utils/personalization";
 import * as mentionFiles from "@/agent/mentionFiles";
 import * as network from "@/utils/network";
 import * as channel from "@/utils/channel";
+import * as cloudSession from "@/utils/cloudSession";
 import * as multiTenant from "@/utils/multiTenant";
 
 export default {
@@ -79,5 +80,6 @@ export default {
   mentionFiles,
   network,
   channel,
+  cloudSession,
   multiTenant,
 };

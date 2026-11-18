@@ -58,6 +58,7 @@ export default router.put("/", validateFields({ expectedRevision: z.number().int
     const commit = () => {
       // 开关只由超管接口修改；异步准备完成后读取最新值，避免其他页面的旧快照覆盖。
       settings.multiTenantEnabled = u.multiTenant.isEnabled();
+      u.cloudSession.keepNewApiBaseUrl(settings);
       u.conf.set("settings", settings);
     };
     if (network) u.network.configureNetwork(network, undefined, commit);

@@ -92,7 +92,9 @@ const allSettingsPanels = [
     component: defineAsyncComponent(() => import("./panels/personalization/index.vue")),
   },
   { id: "developer", label: "开发者选项", icon: IconCode, component: defineAsyncComponent(() => import("./panels/developer/index.vue")) },
-  { id: "multiTenant", label: "多租户能力", icon: IconUsersGroup, component: defineAsyncComponent(() => import("./panels/multiTenant/developmentNotice.vue")) },
+  { id: "multiTenant", label: "多租户能力", icon: IconUsersGroup, component: defineAsyncComponent(() => import.meta.env.DEV
+    ? import("./panels/multiTenant/index.vue")
+    : import("./panels/multiTenant/developmentNotice.vue")) },
   { id: "about", label: "关于", icon: IconInfoCircle, component: defineAsyncComponent(() => import("./panels/about/index.vue")) },
 ];
 const publicAccountPanel = { ...allSettingsPanels[0]!, get label() { return translate("账号"); } };

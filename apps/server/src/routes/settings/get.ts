@@ -19,5 +19,7 @@ export default router.get("/", async (req, res) => {
   }
   const removedLegacySettings = u.removeLegacySettings(settings);
   if (u.cleanNodeMenuSettings(settings) || removedLegacySettings) u.conf.set("settings", settings);
-  res.json(success({ ...settings, multiTenantEnabled: u.multiTenant.isEnabled() }));
+  const publicSettings = { ...settings };
+  delete publicSettings.newApiBaseUrl;
+  res.json(success({ ...publicSettings, multiTenantEnabled: u.multiTenant.isEnabled() }));
 });
